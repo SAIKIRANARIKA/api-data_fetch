@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+</head>
+<body>
+    <div id="main">
+        hello
+    </div>
+    <script>
+        async function getData(){
+            const url = await fetch('https://dummyjson.com/products');
+            let data=await url.json();
+            let mydata=data.products;
+            console.log(mydata);
+
+
+            const data1 = mydata.map(a =>{
+            return(
+                `<div>
+                    <img src=${a.images} >
+                    <p>${a.id}</p>
+                </div>`
+                );
+           }).join("");
+             //-- document.write(data1);
+             document.getElementById('main').innerHTML=data1;
+           
+       
+        }
+        getData();
+    </script>
+</body>
+</html>

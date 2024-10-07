@@ -4,10 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .demo{
+            border: 2px solid hsla(0, 7%, 84%, 0.898);
+            text-align: center;
+            padding: 10px;
+            margin: 15px;
+            background: #ebc6c6;
+            width: 200px;
+        }
+
+        .demo:hover{
+            border:2px solid #cf9cf1;
+            box-shadow: 0px 0px 10px #de8fe9,0px 0px 20px #de8fe9;
+        }
+        
+        .demo img{
+            display: flex;
+            flex-wrap: wrap;
+            height: 200px;
+            width: 200px;
+            background-color: hwb(0 100% 0%);
+            border-radius: 10px 10px 10px 10px;
+        }
+        #main{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .click{
+            align-items: center;
+            border-radius: 10px 10px;
+            background: hsl(41, 97%, 49%);
+           
+            font-size: small;
+        }
+        .click:hover{
+            
+        }
+
+    </style>
 </head>
 <body>
     <div id="main">
-        hello
     </div>
     <script>
         async function getData(){
@@ -19,18 +62,22 @@
 
             const data1 = mydata.map(a =>{
             return(
-                `<div>
-                    <img src=${a.images} >
-                    <p>${a.id}</p>
+                `<div class="demo ">
+                    <img src=${a.images[0]}>
+                    <p>${a.title}</p>
+                    <p> ${a.description.slice(0,25)}</p>
+                    <p>${a.price}</p>
+                    <button class="click">Buy Now</button>
                 </div>`
                 );
-           }).join("");
+            }).join("");
              //-- document.write(data1);
-             document.getElementById('main').innerHTML=data1;
-           
-       
+            document.getElementById('main').innerHTML=data1;
         }
         getData();
+    </script>
+</body>
+</html>
     </script>
 </body>
 </html>
